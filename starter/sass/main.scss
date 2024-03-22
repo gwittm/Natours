@@ -11,6 +11,10 @@ $color-primary:#55c57a;
 $color-primary-light:#7ed56f;
 $color-primary-dark: #28b485;
 
+$color-grey-dark: #777;
+$color-white: #fff;
+$color-black:#000;
+
 *,
 *::after,
 *::before {
@@ -29,12 +33,10 @@ $color-primary-dark: #28b485;
 body {
     font-family: "Lato", sans-serif;
     font-weight: 400;
-  /*   font-size: 16px; */
     line-height: 1.7;
-    color: #7777;
+    color: $color-grey-dark;
     padding: 3rem;
     box-sizing: border-box;
-
 }
 
 .header {
@@ -48,58 +50,56 @@ body {
     background-position: top;
     position: relative;
     clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%)
+
+    &__logo-box{
+        position: absolute;
+        top: 4rem;
+        left: 4rem;
+    }
+
+    &__logo{
+        height: 3.5rem;
+    }
+
+    &__text-box{
+        position: absolute;
+        top: 40%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        text-align: center;
+    }
 }
 
-.header__logo-box{
-    position: absolute;
-    top: 4rem;
-    left: 4rem;
-}
-
-.header__logo{
-    height: 3.5rem;
-}
-
-.header__text-box{
-    position: absolute;
-    top: 40%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    text-align: center;
-}
 
 .heading-primary {
-    color: #fff;
+    color: $color-white;
     text-transform: uppercase;
     backface-visibility: hidden;
     margin-bottom: 6rem;
+
+    &--main{
+        display: block;
+        font-size: 6rem;
+        font-weight: 400; 
+        letter-spacing: 3.5rem;
+        
+        animation-name: moveInLeft;
+        animation-duration: 1s;
+        animation-timing-function: ease-out;
+        }
+
+    &--sub{
+        display: block;
+        font-size: 2rem;
+        font-weight: 700;            
+        letter-spacing: 1.75rem;
+        animation: moveInRight 1s ease-out;
+        }
+
 }
 
-.heading-primary--main{
-display: block;
-font-size: 6rem;
-font-weight: 400; 
-letter-spacing: 3.5rem;
 
-animation-name: moveInLeft;
-animation-duration: 1s;
-/* animation-delay: 1s;
- */animation-timing-function: ease-out;
-/* animation-iteration-count: 3; */
-}
 
-.heading-primary--sub{
-display: block;
-font-size: 2rem;
-font-weight: 700;
-letter-spacing: 1.75rem;
-animation: moveInRight 1s ease-out;
-
-/* animation-name: moveInRight;
-animation-duration: 1s;
-animation-delay: 1s;
-animation-timing-function: ease-out; */
-}
 
 @keyframes moveInLeft{
     0%{
@@ -147,7 +147,8 @@ animation-timing-function: ease-out; */
     }
 }
 
-.button:link, button:visited {
+.button{
+&:link, &:visited {
     text-transform: uppercase;
     text-decoration: none;
     padding: 1.5rem 4rem;
@@ -158,23 +159,33 @@ animation-timing-function: ease-out; */
     font-size: 1.6rem;
 }
 
-.button:hover{
+&:hover{
     transform: translateY(-.3rem);
-    box-shadow: 0 1rem 2rem rgba(0,0,0, .2);
+    box-shadow: 0 1rem 2rem rgba($color-black, .2);
+
+    &::after{
+        transform: scale(1.5);
+        opacity: 0;
+    }
 }
 
-.button:active{
+&:active{
     transform: translateY(-.1rem);
-    box-shadow: 0 .5rem 1rem rgba(0,0,0, .2);
+    box-shadow: 0 .5rem 1rem rgba($color-black, .2);
 
 }
 
-.button--white{
-    background-color: #fff;
-    color: #777;
+&--white{
+    background-color: $color-white;
+    color: $color-grey-dark;
+
+    &::after{
+        background-color: $color-white;
+    }
+    
 }
 
-.button::after{
+&::after{
     content: "";
     display: inline-block;
     height: 100%;
@@ -187,16 +198,10 @@ animation-timing-function: ease-out; */
     transition: all .4s;
 }
 
-.button-white::after{
-    background-color: #fff;
-}
 
-.button:hover::after{
-    transform: scale(1.5);
-    opacity: 0;
-}
-
-.button--animated{
+&--animated{
     animation: moveInButton .5s ease-out .75s;
     animation-fill-mode: backwards;
 }
+}
+
