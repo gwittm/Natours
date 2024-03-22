@@ -4,7 +4,7 @@
   "description": "Project created within the Udemy online-course \"Advanced CSS and Sass: Flexbox, Grid, Animations and More!\"",
   "main": "index.js",
   "scripts": {
-    "compile:sass": "node-sass starter/sass/main.scss starter/css/style.css"
+    "compile:sass": "node-sass starter/sass/main.scss starter/css/style.css -w"
 
   },
   "author": "",
