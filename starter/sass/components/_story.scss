@@ -10,8 +10,6 @@
     overflow: hidden;
     transform: skewX(-12deg);
 
-    &>*
-
 
   &__img {
     height: 100%;
@@ -21,11 +19,14 @@
     }
 
 &__shape {
+    color: $color-white;
     width: 15rem;
     height: 15rem;
     shape-outside: circle(50%);
     -webkit-shape-outside: circle(50% at 50% 50%);
-    transform: translateX(-3rem) skewX(12deg);;
+    transform: translateX(-3rem) skewX(12deg);
+    position: relative;
+    
 }
 
    &__text {
@@ -34,5 +35,28 @@
         margin-top: -12rem;
         transform: skewX(12deg);
     }
+
+   &__caption{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, 20%);
+    text-transform: uppercase;
+    text-align: center;
+    font-size: 1.7rem;
+    opacity: 0;
+    transition: all .5s;
+    backface-visibility: hidden;
+   } 
     
+   &:hover &__caption {
+    opacity: 1;
+    transform: translate(-50%, -50%);
+   }
+
+   &:hover &__img{
+    transform: scale(.95);
+    transition: all .5s;
+    filter: blur(3px) brightness(70%);
+   }
 }
