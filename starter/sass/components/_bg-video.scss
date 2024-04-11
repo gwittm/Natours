@@ -1,0 +1,19 @@
+//overflow is not yet hidden
+
+.background-video{
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 300px;
+    height: 100%;
+    width: 100%;
+    z-index: -1;
+    opacity: .40;
+    overflow: hidden;
+
+    &__content{
+        height: 100%;
+        width: 100%;
+        object-fit: cover;
+    }
+    }
