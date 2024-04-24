@@ -6,6 +6,10 @@
     @include respond(tab-port){
         padding: 20rem 0;
     }
+
+    @include respond (phone){
+        padding-top: 35rem;
+    }
 }
 
 .section-features{
